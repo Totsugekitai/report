@@ -1,0 +1,94 @@
+\documentclass[a4paper,titlepage]{jlreq}
+
+\usepackage{graphicx}
+\usepackage{listings}
+\lstset{
+  basicstyle=\small\ttfamily,
+  identifierstyle=\small,
+  ndkeywordstyle=\small,
+  tabsize=4,
+  frame={shadowbox},
+  frameround={ffff},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  numbersep=5pt,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  lineskip=-0.5ex
+}
+\renewcommand{\lstlistingname}{ソースコード} % キャプション名の変更
+\usepackage{hyperref}
+\usepackage{here}
+
+\title{レポートサンプル}
+\author{201811377 広瀬智之}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{実験の目的}
+本実験の目的は，モンテカルロ法による定積分\footnote{ヒットミス法ともいう}を用いて半径1の円の面積を求めることである．
+
+\section{実験方法}
+C言語のプログラムを用いて検証する．
+具体的には，以下の2つを求める．
+
+\begin{enumerate}
+    \item{不等式$x^{2}+y^{2}\leq1$を満たす乱数の組$(x,y)$を500組発生させ，グラフを作成する}
+    \item{不等式$-1\leq x \leq1, -1\leq y \leq1$を満たす乱数の組$(x,y)$を発生させ，表\ref{tab}を作成する}
+\end{enumerate}
+
+\begin{table}[H]
+\begin{center}
+\caption{求める表}
+\begin{tabular}{|l|c|c|c|}
+\hline
+乱数の組の数               & 100 & 1000 & 10000 \\ \hline
+面積の平均値(10試行)         &     &      &       \\ \hline
+$((\pi - 面積の平均値) / \pi) * 4$ &     &      &       \\ \hline
+\end{tabular}
+\label{tab}
+\end{center}
+\end{table}
+
+\section{実験結果}
+\subsection{実験1}
+プログラム\ref{ex1}を用いて乱数を発生させ，gnuplotを用いてグラフ\ref{graph}を作成した．
+
+%%\begin{figure}[H]
+%%    \centering
+%%    \caption{グラフ}
+%%    \includegraphics[clip,width=0.9\linewidth]{../graph01.pdf}
+%%    \label{graph}
+%%\end{figure}
+
+\subsection{実験2}
+プログラム\ref{ex2}を用いて乱数を発生させ，表\ref{tab:ok}を作成した．
+
+\begin{table}[H]
+\begin{center}
+\caption{求める表}
+\begin{tabular}{|l|c|c|c|}
+\hline
+乱数の組の数               & 100 & 1000 & 10000 \\ \hline
+面積の平均値(10試行)         & 0.779000 & 0.791600 & 0.785830  \\ \hline
+$((\pi - 面積の平均値) / \pi) * 4$ & 3.008146 & 2.992103 & 2.999449  \\ \hline
+\end{tabular}
+\label{tab:ok}
+\end{center}
+\end{table}
+
+\section{考察}
+結果は概ね3に収束した．
+サンプル数を増やしていけば円周率にさらに近づくと考えられる．
+
+
+\section{プログラムリスト}
+
+%%\lstinputlisting[label=ex1,language=c,caption=実験1]{../ex1.c}
+%%\lstinputlisting[label=ex2,language=c,caption=実験2]{../ex2.c}
+
+\end{document}
